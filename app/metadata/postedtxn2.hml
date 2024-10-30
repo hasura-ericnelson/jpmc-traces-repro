@@ -1,0 +1,111 @@
+kind: DataConnectorLink
+version: v1
+definition:
+  name: postedtxn2
+  url:
+    readWriteUrls:
+      read:
+        valueFromEnv: APP_POSTEDTXN2_READ_URL
+      write:
+        valueFromEnv: APP_POSTEDTXN2_WRITE_URL
+  headers:
+    Authorization:
+      valueFromEnv: APP_POSTEDTXN2_AUTHORIZATION_HEADER
+  schema:
+    version: v0.1
+    schema:
+      scalar_types:
+        Boolean:
+          representation:
+            type: boolean
+          aggregate_functions: {}
+          comparison_operators: {}
+        Float:
+          representation:
+            type: float64
+          aggregate_functions: {}
+          comparison_operators: {}
+        HeaderMap:
+          representation:
+            type: json
+          aggregate_functions: {}
+          comparison_operators: {}
+        Int:
+          representation:
+            type: integer
+          aggregate_functions: {}
+          comparison_operators: {}
+        Json:
+          representation:
+            type: json
+          aggregate_functions: {}
+          comparison_operators: {}
+        String:
+          representation:
+            type: string
+          aggregate_functions: {}
+          comparison_operators: {}
+      object_types:
+        postedtxn_params:
+          fields:
+            account_activity_end_date:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            account_activity_start_date:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            arn:
+              type:
+                type: named
+                name: Int
+            card_number:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            crn:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Int
+            etu_standard_expense_category_code:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            etu_standard_transaction_type_code:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+      collections: []
+      functions:
+        - name: postedtxn
+          arguments:
+            params:
+              type:
+                type: named
+                name: postedtxn_params
+          result_type:
+            type: named
+            name: Json
+      procedures: []
+    capabilities:
+      version: 0.1.5
+      capabilities:
+        query:
+          aggregates: {}
+          variables: {}
+          explain: {}
+        mutation:
+          transactional: {}

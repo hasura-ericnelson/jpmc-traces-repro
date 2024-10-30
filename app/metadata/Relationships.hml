@@ -1,0 +1,17 @@
+---
+kind: Relationship
+version: v1
+definition:
+  name: _posted
+  sourceType: CardAuthTxn
+  target:
+    model:
+      name: CardPostedTxn
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: arn
+      target:
+        modelField:
+          - fieldName: arn

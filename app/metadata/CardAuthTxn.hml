@@ -1,0 +1,472 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CardAuthTxn
+  fields:
+    - name: arn
+      type: Int8!
+    - name: authAm
+      type: Float8!
+    - name: authDeclRsn
+      type: Varchar
+    - name: authDispCd
+      type: Varchar
+    - name: authDt
+      type: Date!
+    - name: authHigh
+      type: Int8!
+    - name: authLow
+      type: Int8!
+    - name: authMsgCd
+      type: Varchar
+    - name: authProcCd
+      type: Varchar
+    - name: authRespCd
+      type: Varchar
+    - name: authSrceCd
+      type: Varchar
+    - name: authTermId
+      type: Int4
+    - name: authTm
+      type: Time!
+    - name: authTyp
+      type: Varchar!
+    - name: cardPan
+      type: Varchar!
+    - name: crdb
+      type: Bpchar!
+    - name: crn
+      type: Int8!
+    - name: mcc
+      type: Int4
+    - name: mrchCatGrp
+      type: Varchar
+    - name: mrchCity
+      type: Varchar
+    - name: mrchCntryCd
+      type: Varchar
+    - name: mrchDba
+      type: Varchar
+    - name: mrchPstCd
+      type: Varchar
+    - name: mrchState
+      type: Varchar
+    - name: poiTyp
+      type: Varchar
+    - name: toknRqstId
+      type: Varchar
+    - name: toknRqstNb
+      type: Varchar
+    - name: txnId
+      type: Varchar
+    - name: txnRefNb
+      type: Varchar
+  graphql:
+    typeName: CardAuthTxn
+    inputTypeName: CardAuthTxnInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_connector
+      dataConnectorObjectType: card_auth_txn
+      fieldMapping:
+        arn:
+          column:
+            name: arn
+        authAm:
+          column:
+            name: auth_am
+        authDeclRsn:
+          column:
+            name: auth_decl_rsn
+        authDispCd:
+          column:
+            name: auth_disp_cd
+        authDt:
+          column:
+            name: auth_dt
+        authHigh:
+          column:
+            name: auth_high
+        authLow:
+          column:
+            name: auth_low
+        authMsgCd:
+          column:
+            name: auth_msg_cd
+        authProcCd:
+          column:
+            name: auth_proc_cd
+        authRespCd:
+          column:
+            name: auth_resp_cd
+        authSrceCd:
+          column:
+            name: auth_srce_cd
+        authTermId:
+          column:
+            name: auth_term_id
+        authTm:
+          column:
+            name: auth_tm
+        authTyp:
+          column:
+            name: auth_typ
+        cardPan:
+          column:
+            name: card_pan
+        crdb:
+          column:
+            name: crdb
+        crn:
+          column:
+            name: crn
+        mcc:
+          column:
+            name: mcc
+        mrchCatGrp:
+          column:
+            name: mrch_cat_grp
+        mrchCity:
+          column:
+            name: mrch_city
+        mrchCntryCd:
+          column:
+            name: mrch_cntry_cd
+        mrchDba:
+          column:
+            name: mrch_dba
+        mrchPstCd:
+          column:
+            name: mrch_pst_cd
+        mrchState:
+          column:
+            name: mrch_state
+        poiTyp:
+          column:
+            name: poi_typ
+        toknRqstId:
+          column:
+            name: tokn_rqst_id
+        toknRqstNb:
+          column:
+            name: tokn_rqst_nb
+        txnId:
+          column:
+            name: txn_id
+        txnRefNb:
+          column:
+            name: txn_ref_nb
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CardAuthTxn
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - arn
+          - authAm
+          - authDeclRsn
+          - authDispCd
+          - authDt
+          - authHigh
+          - authLow
+          - authMsgCd
+          - authProcCd
+          - authRespCd
+          - authSrceCd
+          - authTermId
+          - authTm
+          - authTyp
+          - cardPan
+          - crdb
+          - crn
+          - mcc
+          - mrchCatGrp
+          - mrchCity
+          - mrchCntryCd
+          - mrchDba
+          - mrchPstCd
+          - mrchState
+          - poiTyp
+          - toknRqstId
+          - toknRqstNb
+          - txnId
+          - txnRefNb
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CardAuthTxnBoolExp
+  operand:
+    object:
+      type: CardAuthTxn
+      comparableFields:
+        - fieldName: arn
+          booleanExpressionType: Int8BoolExp
+        - fieldName: authAm
+          booleanExpressionType: Float8BoolExp
+        - fieldName: authDeclRsn
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authDispCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authDt
+          booleanExpressionType: DateBoolExp
+        - fieldName: authHigh
+          booleanExpressionType: Int8BoolExp
+        - fieldName: authLow
+          booleanExpressionType: Int8BoolExp
+        - fieldName: authMsgCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authProcCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authRespCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authSrceCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: authTermId
+          booleanExpressionType: Int4BoolExp
+        - fieldName: authTm
+          booleanExpressionType: TimeBoolExp
+        - fieldName: authTyp
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: cardPan
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: crdb
+          booleanExpressionType: BpcharBoolExp
+        - fieldName: crn
+          booleanExpressionType: Int8BoolExp
+        - fieldName: mcc
+          booleanExpressionType: Int4BoolExp
+        - fieldName: mrchCatGrp
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchCity
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchCntryCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchDba
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchPstCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchState
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: poiTyp
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: toknRqstId
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: toknRqstNb
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: txnId
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: txnRefNb
+          booleanExpressionType: VarcharBoolExp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CardAuthTxnBoolExp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: CardAuthTxnAggExp
+  operand:
+    object:
+      aggregatedType: CardAuthTxn
+      aggregatableFields:
+        - fieldName: arn
+          aggregateExpression: Int8AggExp
+        - fieldName: authAm
+          aggregateExpression: Float8AggExp
+        - fieldName: authDeclRsn
+          aggregateExpression: VarcharAggExp
+        - fieldName: authDispCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: authDt
+          aggregateExpression: DateAggExp
+        - fieldName: authHigh
+          aggregateExpression: Int8AggExp
+        - fieldName: authLow
+          aggregateExpression: Int8AggExp
+        - fieldName: authMsgCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: authProcCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: authRespCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: authSrceCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: authTermId
+          aggregateExpression: Int4AggExp
+        - fieldName: authTm
+          aggregateExpression: TimeAggExp
+        - fieldName: authTyp
+          aggregateExpression: VarcharAggExp
+        - fieldName: cardPan
+          aggregateExpression: VarcharAggExp
+        - fieldName: crdb
+          aggregateExpression: BpcharAggExp
+        - fieldName: crn
+          aggregateExpression: Int8AggExp
+        - fieldName: mcc
+          aggregateExpression: Int4AggExp
+        - fieldName: mrchCatGrp
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchCity
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchCntryCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchDba
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchPstCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchState
+          aggregateExpression: VarcharAggExp
+        - fieldName: poiTyp
+          aggregateExpression: VarcharAggExp
+        - fieldName: toknRqstId
+          aggregateExpression: VarcharAggExp
+        - fieldName: toknRqstNb
+          aggregateExpression: VarcharAggExp
+        - fieldName: txnId
+          aggregateExpression: VarcharAggExp
+        - fieldName: txnRefNb
+          aggregateExpression: VarcharAggExp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: CardAuthTxnAggExp
+
+---
+kind: Model
+version: v1
+definition:
+  name: CardAuthTxn
+  objectType: CardAuthTxn
+  source:
+    dataConnectorName: my_connector
+    collection: card_auth_txn
+  filterExpressionType: CardAuthTxnBoolExp
+  aggregateExpression: CardAuthTxnAggExp
+  orderableFields:
+    - fieldName: arn
+      orderByDirections:
+        enableAll: true
+    - fieldName: authAm
+      orderByDirections:
+        enableAll: true
+    - fieldName: authDeclRsn
+      orderByDirections:
+        enableAll: true
+    - fieldName: authDispCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: authDt
+      orderByDirections:
+        enableAll: true
+    - fieldName: authHigh
+      orderByDirections:
+        enableAll: true
+    - fieldName: authLow
+      orderByDirections:
+        enableAll: true
+    - fieldName: authMsgCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: authProcCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: authRespCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: authSrceCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: authTermId
+      orderByDirections:
+        enableAll: true
+    - fieldName: authTm
+      orderByDirections:
+        enableAll: true
+    - fieldName: authTyp
+      orderByDirections:
+        enableAll: true
+    - fieldName: cardPan
+      orderByDirections:
+        enableAll: true
+    - fieldName: crdb
+      orderByDirections:
+        enableAll: true
+    - fieldName: crn
+      orderByDirections:
+        enableAll: true
+    - fieldName: mcc
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchCatGrp
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchCity
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchCntryCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchDba
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchPstCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchState
+      orderByDirections:
+        enableAll: true
+    - fieldName: poiTyp
+      orderByDirections:
+        enableAll: true
+    - fieldName: toknRqstId
+      orderByDirections:
+        enableAll: true
+    - fieldName: toknRqstNb
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnId
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnRefNb
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: cardAuthTxn
+    selectUniques:
+      - queryRootField: cardAuthTxnByCardAuthTxnPkey
+        uniqueIdentifier:
+          - arn
+          - authDt
+          - authHigh
+          - authLow
+          - authTm
+          - cardPan
+          - crn
+    orderByExpressionType: CardAuthTxnOrderBy
+    filterInputTypeName: CardAuthTxnFilterInput
+    aggregate:
+      queryRootField: cardAuthTxnAggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: CardAuthTxn
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

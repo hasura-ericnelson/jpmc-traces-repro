@@ -1,0 +1,92 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: PostedtxnParams
+  fields:
+    - name: accountActivityEndDate
+      type: String
+    - name: accountActivityStartDate
+      type: String
+    - name: arn
+      type: Int!
+    - name: cardNumber
+      type: String
+    - name: crn
+      type: Int
+    - name: etuStandardExpenseCategoryCode
+      type: String
+    - name: etuStandardTransactionTypeCode
+      type: String
+  graphql:
+    typeName: PostedtxnParams
+    inputTypeName: PostedtxnParamsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: postedtxn2
+      dataConnectorObjectType: postedtxn_params
+      fieldMapping:
+        accountActivityEndDate:
+          column:
+            name: account_activity_end_date
+        accountActivityStartDate:
+          column:
+            name: account_activity_start_date
+        arn:
+          column:
+            name: arn
+        cardNumber:
+          column:
+            name: card_number
+        crn:
+          column:
+            name: crn
+        etuStandardExpenseCategoryCode:
+          column:
+            name: etu_standard_expense_category_code
+        etuStandardTransactionTypeCode:
+          column:
+            name: etu_standard_transaction_type_code
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: PostedtxnParams
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - accountActivityEndDate
+          - accountActivityStartDate
+          - arn
+          - cardNumber
+          - crn
+          - etuStandardExpenseCategoryCode
+          - etuStandardTransactionTypeCode
+
+---
+kind: Command
+version: v1
+definition:
+  name: Postedtxn
+  outputType: Json_2!
+  arguments:
+    - name: params
+      type: PostedtxnParams!
+  source:
+    dataConnectorName: postedtxn2
+    dataConnectorCommand:
+      function: postedtxn
+  graphql:
+    rootFieldName: postedtxn
+    rootFieldKind: Query
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: Postedtxn
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,28 @@
+---
+kind: ScalarType
+version: v1
+definition:
+  name: Json_2
+  graphql:
+    typeName: Json2
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: JsonBoolExp_2
+  operand:
+    scalar:
+      type: Json_2
+      comparisonOperators: []
+      dataConnectorOperatorMapping:
+        - dataConnectorName: postedtxn2
+          dataConnectorScalarType: Json
+          operatorMapping: {}
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: JsonBoolExp2
+

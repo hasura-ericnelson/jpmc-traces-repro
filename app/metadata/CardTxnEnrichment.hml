@@ -1,0 +1,406 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: CardTxnEnrichment
+  fields:
+    - name: arn
+      type: Int8!
+    - name: cardPan
+      type: Varchar!
+    - name: crn
+      type: Int8!
+    - name: custEnrchMemo
+      type: Varchar
+    - name: custEnrchSpndCat
+      type: Varchar
+    - name: enrchActvCd
+      type: Varchar!
+    - name: enrchMrchCity
+      type: Varchar
+    - name: enrchMrchNm
+      type: Varchar
+    - name: enrchMrchPhn
+      type: Varchar
+    - name: enrchMrchPstCd
+      type: Varchar
+    - name: enrchMrchState
+      type: Varchar
+    - name: enrchMrchUrl
+      type: Text
+    - name: enrchTypCd
+      type: Varchar!
+    - name: enrichDesc
+      type: Text
+    - name: enrichDt
+      type: Date!
+    - name: etudeMrchId
+      type: Varchar
+    - name: mrchRoleCd
+      type: Varchar
+    - name: pstAuthDt
+      type: Date!
+    - name: pstAuthTm
+      type: Time!
+    - name: txnDt
+      type: Date!
+    - name: txnId
+      type: Varchar!
+    - name: txnTagCatCd
+      type: Varchar
+    - name: txnTagDesc
+      type: Varchar
+    - name: txnTagTypCd
+      type: Varchar
+  graphql:
+    typeName: CardTxnEnrichment
+    inputTypeName: CardTxnEnrichmentInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_connector
+      dataConnectorObjectType: card_txn_enrichment
+      fieldMapping:
+        arn:
+          column:
+            name: arn
+        cardPan:
+          column:
+            name: card_pan
+        crn:
+          column:
+            name: crn
+        custEnrchMemo:
+          column:
+            name: cust_enrch_memo
+        custEnrchSpndCat:
+          column:
+            name: cust_enrch_spnd_cat
+        enrchActvCd:
+          column:
+            name: enrch_actv_cd
+        enrchMrchCity:
+          column:
+            name: enrch_mrch_city
+        enrchMrchNm:
+          column:
+            name: enrch_mrch_nm
+        enrchMrchPhn:
+          column:
+            name: enrch_mrch_phn
+        enrchMrchPstCd:
+          column:
+            name: enrch_mrch_pst_cd
+        enrchMrchState:
+          column:
+            name: enrch_mrch_state
+        enrchMrchUrl:
+          column:
+            name: enrch_mrch_url
+        enrchTypCd:
+          column:
+            name: enrch_typ_cd
+        enrichDesc:
+          column:
+            name: enrich_desc
+        enrichDt:
+          column:
+            name: enrich_dt
+        etudeMrchId:
+          column:
+            name: etude_mrch_id
+        mrchRoleCd:
+          column:
+            name: mrch_role_cd
+        pstAuthDt:
+          column:
+            name: pst_auth_dt
+        pstAuthTm:
+          column:
+            name: pst_auth_tm
+        txnDt:
+          column:
+            name: txn_dt
+        txnId:
+          column:
+            name: txn_id
+        txnTagCatCd:
+          column:
+            name: txn_tag_cat_cd
+        txnTagDesc:
+          column:
+            name: txn_tag_desc
+        txnTagTypCd:
+          column:
+            name: txn_tag_typ_cd
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: CardTxnEnrichment
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - arn
+          - cardPan
+          - crn
+          - custEnrchMemo
+          - custEnrchSpndCat
+          - enrchActvCd
+          - enrchMrchCity
+          - enrchMrchNm
+          - enrchMrchPhn
+          - enrchMrchPstCd
+          - enrchMrchState
+          - enrchMrchUrl
+          - enrchTypCd
+          - enrichDesc
+          - enrichDt
+          - etudeMrchId
+          - mrchRoleCd
+          - pstAuthDt
+          - pstAuthTm
+          - txnDt
+          - txnId
+          - txnTagCatCd
+          - txnTagDesc
+          - txnTagTypCd
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: CardTxnEnrichmentBoolExp
+  operand:
+    object:
+      type: CardTxnEnrichment
+      comparableFields:
+        - fieldName: arn
+          booleanExpressionType: Int8BoolExp
+        - fieldName: cardPan
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: crn
+          booleanExpressionType: Int8BoolExp
+        - fieldName: custEnrchMemo
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: custEnrchSpndCat
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchActvCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchCity
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchNm
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchPhn
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchPstCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchState
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrchMrchUrl
+          booleanExpressionType: TextBoolExp
+        - fieldName: enrchTypCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: enrichDesc
+          booleanExpressionType: TextBoolExp
+        - fieldName: enrichDt
+          booleanExpressionType: DateBoolExp
+        - fieldName: etudeMrchId
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: mrchRoleCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: pstAuthDt
+          booleanExpressionType: DateBoolExp
+        - fieldName: pstAuthTm
+          booleanExpressionType: TimeBoolExp
+        - fieldName: txnDt
+          booleanExpressionType: DateBoolExp
+        - fieldName: txnId
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: txnTagCatCd
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: txnTagDesc
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: txnTagTypCd
+          booleanExpressionType: VarcharBoolExp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: CardTxnEnrichmentBoolExp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: CardTxnEnrichmentAggExp
+  operand:
+    object:
+      aggregatedType: CardTxnEnrichment
+      aggregatableFields:
+        - fieldName: arn
+          aggregateExpression: Int8AggExp
+        - fieldName: cardPan
+          aggregateExpression: VarcharAggExp
+        - fieldName: crn
+          aggregateExpression: Int8AggExp
+        - fieldName: custEnrchMemo
+          aggregateExpression: VarcharAggExp
+        - fieldName: custEnrchSpndCat
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchActvCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchCity
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchNm
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchPhn
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchPstCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchState
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrchMrchUrl
+          aggregateExpression: TextAggExp
+        - fieldName: enrchTypCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: enrichDesc
+          aggregateExpression: TextAggExp
+        - fieldName: enrichDt
+          aggregateExpression: DateAggExp
+        - fieldName: etudeMrchId
+          aggregateExpression: VarcharAggExp
+        - fieldName: mrchRoleCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: pstAuthDt
+          aggregateExpression: DateAggExp
+        - fieldName: pstAuthTm
+          aggregateExpression: TimeAggExp
+        - fieldName: txnDt
+          aggregateExpression: DateAggExp
+        - fieldName: txnId
+          aggregateExpression: VarcharAggExp
+        - fieldName: txnTagCatCd
+          aggregateExpression: VarcharAggExp
+        - fieldName: txnTagDesc
+          aggregateExpression: VarcharAggExp
+        - fieldName: txnTagTypCd
+          aggregateExpression: VarcharAggExp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: CardTxnEnrichmentAggExp
+
+---
+kind: Model
+version: v1
+definition:
+  name: CardTxnEnrichment
+  objectType: CardTxnEnrichment
+  source:
+    dataConnectorName: my_connector
+    collection: card_txn_enrichment
+  filterExpressionType: CardTxnEnrichmentBoolExp
+  aggregateExpression: CardTxnEnrichmentAggExp
+  orderableFields:
+    - fieldName: arn
+      orderByDirections:
+        enableAll: true
+    - fieldName: cardPan
+      orderByDirections:
+        enableAll: true
+    - fieldName: crn
+      orderByDirections:
+        enableAll: true
+    - fieldName: custEnrchMemo
+      orderByDirections:
+        enableAll: true
+    - fieldName: custEnrchSpndCat
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchActvCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchCity
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchNm
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchPhn
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchPstCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchState
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchMrchUrl
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrchTypCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrichDesc
+      orderByDirections:
+        enableAll: true
+    - fieldName: enrichDt
+      orderByDirections:
+        enableAll: true
+    - fieldName: etudeMrchId
+      orderByDirections:
+        enableAll: true
+    - fieldName: mrchRoleCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: pstAuthDt
+      orderByDirections:
+        enableAll: true
+    - fieldName: pstAuthTm
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnDt
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnId
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnTagCatCd
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnTagDesc
+      orderByDirections:
+        enableAll: true
+    - fieldName: txnTagTypCd
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: cardTxnEnrichment
+    selectUniques:
+      - queryRootField: cardTxnEnrichmentByCardTxnEnrichmentPkey
+        uniqueIdentifier:
+          - arn
+          - cardPan
+          - crn
+          - enrchTypCd
+          - txnDt
+          - txnId
+    orderByExpressionType: CardTxnEnrichmentOrderBy
+    filterInputTypeName: CardTxnEnrichmentFilterInput
+    aggregate:
+      queryRootField: cardTxnEnrichmentAggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: CardTxnEnrichment
+  permissions:
+    - role: admin
+      select:
+        filter: null
+

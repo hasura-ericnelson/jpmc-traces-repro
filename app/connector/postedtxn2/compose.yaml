@@ -1,0 +1,24 @@
+services:
+  app_postedtxn2:
+    build:
+      context: .
+      dockerfile: .hasura-connector/Dockerfile
+    develop:
+      watch:
+        - path: requirements.txt
+          action: rebuild
+          target: /functions/requirements.txt
+        - path: ./
+          action: sync+restart
+          target: /functions
+    environment:
+      HASURA_SERVICE_TOKEN_SECRET: $APP_POSTEDTXN2_HASURA_SERVICE_TOKEN_SECRET
+      OTEL_EXPORTER_OTLP_ENDPOINT: $APP_POSTEDTXN2_OTEL_EXPORTER_OTLP_ENDPOINT
+      OTEL_SERVICE_NAME: $APP_POSTEDTXN2_OTEL_SERVICE_NAME
+    extra_hosts:
+      - local.hasura.dev=host-gateway
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "4257"
+        protocol: tcp
