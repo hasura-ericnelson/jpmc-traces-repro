@@ -9,10 +9,12 @@ from pydantic import BaseModel, validator, ValidationError, model_validator
 from typing import Optional
 from datetime import date, datetime
 
+tracer = get_tracer("ndc-sdk-python.server")
+
 connector = FunctionConnector()
-TOKEN = "eyJhbGciOiJFZERTQSIsImtpZCI6IjlkX2JMaEVGbWpSelMwanpxajlOSk15Vmt4TUpDZGpJeVkweFZxMFpWNlEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiI0OWM2MGEzZS04YWU2LTRiODQtYjdjZC0zNGQxOWMyZWRiYTUiLCJleHAiOjE3MzAyMTE1MzgsImlhdCI6MTczMDIwNzkzOCwiaXNzIjoiaHR0cHM6Ly9hdXRoLnByby5oYXN1cmEuaW8vZGRuL3Rva2VuIiwic3ViIjoiYWUwODk4NDgtY2MxMy00NDY5LWJhM2MtMTUzYTE1MGJkNWM3In0.3SH_JaWnyNp_KbeQUeCP5PkT0cl1LV0APjttJZ1_R3xV53thbGDEGiQ-xlVriHaCMkWSpoeFhyLUNej2caqbCQ"
+TOKEN = "eyJhbGciOiJFZERTQSIsImtpZCI6IjlkX2JMaEVGbWpSelMwanpxajlOSk15Vmt4TUpDZGpJeVkweFZxMFpWNlEiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiI2ZGE1YmFlNi0zODM5LTQxYWItOTFkNy05M2JmNzczODY3ZjgiLCJleHAiOjE3MzAzMDM2OTcsImlhdCI6MTczMDMwMDA5NywiaXNzIjoiaHR0cHM6Ly9hdXRoLnByby5oYXN1cmEuaW8vZGRuL3Rva2VuIiwic3ViIjoiZWYyM2ZjNmEtNzBhOC00ZjAxLTliMWMtYzJlOGU4YTI5MjBlIn0.A6JtPEbywOHwx9SlsaO8kgDmmNVEFeQDr12_65YshAiERv0XbipqxL1D3W1bl-3TEOOAIxWkDhRRNkzsLSkEDQ"
 headers = {'Content-Type': 'application/json', 'x-hasura-ddn-token': TOKEN}
-GQL_ENDPOINT = "https://in-macaque-4009-786500d79c.ddn.hasura.app/graphql"
+GQL_ENDPOINT = "https://ultimate-mollusk-5883-166b65d1a0.ddn.hasura.app/graphql"
 
 
 class TransactionQueryParams(BaseModel):
@@ -34,6 +36,19 @@ class TransactionQueryParams(BaseModel):
         if (start_date is None) != (end_date is None):
             raise ValueError("Both Start and End Date must be provided")
         return values
+
+# Utilizing with_active_span allows the programmer to add Otel tracing spans
+
+
+@connector.register_query
+async def with_tracing(name: str) -> str:
+
+    def do_some_more_work(_span, work_response):
+        return f"Hello {name}, {work_response}"
+
+    async def the_async_work_to_do():
+        # This isn't actually async work, but it could be! Perhaps a network call belongs here, the power is in your hands fellow programmer!
+        return "That was a lot of work we did!"
 
 
 @connector.register_query  # This is how you register a query

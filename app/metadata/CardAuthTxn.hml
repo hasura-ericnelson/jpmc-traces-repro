@@ -263,7 +263,8 @@ definition:
           booleanExpressionType: VarcharBoolExp
         - fieldName: txnRefNb
           booleanExpressionType: VarcharBoolExp
-      comparableRelationships: []
+      comparableRelationships: 
+        - relationshipName: auth2posted
   logicalOperators:
     enable: true
   isNull:

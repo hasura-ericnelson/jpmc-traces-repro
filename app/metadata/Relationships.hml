@@ -2,7 +2,7 @@
 kind: Relationship
 version: v1
 definition:
-  name: _posted
+  name: auth2posted
   sourceType: CardAuthTxn
   target:
     model:
@@ -15,3 +15,27 @@ definition:
       target:
         modelField:
           - fieldName: arn
+    - source:
+        fieldPath:
+          - fieldName: crn
+      target:
+        modelField:
+          - fieldName: crn
+    - source:
+        fieldPath:
+          - fieldName: authDt
+      target:
+        modelField:
+          - fieldName: txnDt
+    - source:
+        fieldPath:
+          - fieldName: authAm
+      target:
+        modelField:
+          - fieldName: txnAm
+    - source:
+        fieldPath:
+          - fieldName: txnRefNb
+      target:
+        modelField:
+          - fieldName: txnRefNb
